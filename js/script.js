@@ -44,6 +44,8 @@ monogatari.assets ('gallery', {
 
 // Define the music used in the game.
 monogatari.assets ('music', {
+	'musiccastle': 'bgmusiccastle.mp3',
+	'musicgarden': 'bgmusicgarden.mp3'
 
 });
 
@@ -65,7 +67,7 @@ monogatari.assets ('videos', {
 
 // Define the images used in the game.
 monogatari.assets ('images', {
-
+	'flower': 'flower.jpg'
 });
 
 // Define the backgrounds for each scene.
@@ -129,7 +131,8 @@ monogatari.characters ({
             sad: 'princesssad.png',
 			surprised: 'princesssurprised.png',
 			pinkhappy: 'pinkhappy.png',
-			pinknormal: 'pinknormal.png'
+			pinknormal: 'pinknormal.png',
+			pinkangry: 'pinkAngry.png'
         },
         expressions: {
             angry: 'expressions/princessangryexpression.png.',
@@ -138,7 +141,8 @@ monogatari.characters ({
             sad: 'expressions/princesssadexpression.png',
 			surprised: 'expressions/princesssurpriseexpression.png',
 			pinkhappy: 'expressions/pinkhappyexpression.png',
-			pinknormal: 'expressions/pinknormalexpression.png'
+			pinknormal: 'expressions/pinknormalexpression.png',
+			pinkangry: 'expressions/pinkangryexpression.png'
         },
         default_expression: 'normal',
 	},
@@ -157,9 +161,28 @@ monogatari.script ({
 	'Start': [
 		'Before the wedding....',
 		'show scene castle with fadeIn',
-		'show character k surprised at center with fadeIn',
-		'vibrate 200',
-		'k:surprised Welcome to our kingdom! What brings you here Prince....',
+		'play music musiccastle with volume 40 loop',
+		'show character k normal at center with fadeIn',
+		'k Welcome to our HTML kingdom!',
+		'stop music musiccastle',
+		{
+			'Choice': {
+				'Dialog': 'k What is HTML?',
+				'Yes': {
+					'Text': 'HyperText Markup Language',
+					'Do': 'show character k happy at center',
+
+				},
+				'No': {
+					'Text': 'HyperText Mark Language',
+					'Do': 'jump No'	
+				},
+			}
+		}, 
+		'play music musiccastle with volume 40 loop',
+		'k:happy Very Good!',
+		'show character k normal at center',
+		'k What brings you here Prince....',
 		{
 			'Input': {
 				'Text': 'What is your name prince?',
@@ -184,12 +207,34 @@ monogatari.script ({
 				'Warning': 'You must enter a name prince!'
 			}
 		},
-		'show character k normal at center with fadeIn',
-		'k Prince {{player.name}} Welcome to our Kingdom!',
+		'show character k happy at center',
+		'k:happy Prince {{player.name}} Welcome to our Kingdom!',
+		'show character k normal at center',
 		'player Nais ko sana ipaalam sainyo mahal na hari na gusto ko sanang mamasyal kami ni Princess Jasmine bago maganap ang kasalan bukas?',
-		'k Sure! Nasa silid sya ngayon.. *tinawag ung guard* Puntahan mo si princess sabihin mo nandito si Prince {{player.name}}',
-		'show character g angry at right with fadeIn',
-		'g:angry Masusunod mahal na hari!',
+		'stop music musiccastle',
+		{
+			'Choice': {
+				'Dialog': 'k Before that I want to ask you what is the largest heading in HTML?',
+				'Wrong1': {
+					'Text': 'h6',
+					'Do':'jump Mali'
+
+				},
+				'Wrong2': {
+					'Text': 'h3',
+					'Do': 'jump Mali'
+				},
+				'Tama': {
+					'Text': 'h1',
+					'Do': 'show character k happy at center'	
+				},
+			}
+		}, 
+		'k:happy Tama..Nasa silid sya ngayon..',
+		'show character k normal at center',
+		'k Guard! Puntahan mo si princess Jasmine sa kanyang silid sabihin mo nandito si Prince {{player.name}}',
+		'show character g angry at right with fadeInRightBig',
+		'g:angry Masusunod mahal na hari!',	
 		// 'hide character k with fadeOut',
 		// 'hide character g with fadeOut',
 		
@@ -199,76 +244,145 @@ monogatari.script ({
 		'show scene room with fadeIn',
 		'Princess Room',
 		'play sound knock',
-		'show character g normal at left with fadeIn',
+		'show character g normal at left with fadeInLeftBig',
 		'g Knock Knock...',
+		{
+			'Choice': {
+				'Dialog': 'g What is the correct HTML linebreak?',
+				'guardWrong1': {
+					'Text': 'lb',
+					'Do':'jump guardWrong'
+
+				},
+				'guardRight': {
+					'Text': 'br',
+					'Do': 'show character g surprised at left'
+				},
+				'guardWrong2': {
+					'Text': 'break',
+					'Do': 'jump guardWrong'	
+				},
+			}
+		}, 
+		'g:surprised I\'m happy to meet you your Majesty',
+		'show character g normal at left',
 		'g:normal  Mahal na prinsesa nais po kayong makita ng prinsipe',
-		'show character p normal at right with fadeIn',
+		'show character p normal at right with fadeInRightBig',
 		'p:normal Osige! Paki-sabi mag bibihis lang ako magkita na lamang kami sa aming tagpuan',
-		'g Masusunod mahal na prinsesa!',
+		'show character g angry at left',
+		'g:angry Masusunod mahal na prinsesa!',
 		// BACK TO CASTLE
+		'play music musiccastle with volume 40 loop',
 		'show scene castle with fadeIn',
-		'show character g normal at right with fadeIn',
+		'show character g normal at right with fadeInRight',
 		'g Pinapasabi po ng mahal na prinsesa na mag hahanda lamang po sya magkita nalang daw po kayo sa tagpuan',
 		'player Sige mauna na po ako sa tagpuan mahal na hari',
 		'show character k normal at center with fadeIn',
-		'k Sige mag-iingat ka!',
+		'k Before you go',
+		{
+			'Choice': {
+				'Dialog': 'k Do you know how to create a hyperlink?',
+				'guardWrong1': {
+					'Text': 'a url',
+					'Do':'jump Mali'
+
+				},
+				'Right': {
+					'Text': 'a href',
+					'Do': 'show character k happy at center'
+				},
+				'guardWrong2': {
+					'Text': 'a name',
+					'Do': 'jump Mali'	
+				},
+			}
+		}, 
+		'k:happy Thank you very much',
+		'k:happy Sige na at mag-iingat ka!',
+		'stop music musiccastle',
 		// GARDEN SCENE
+		'play music musicgarden with volume 40 loop',
 		'show scene garden with fadeIn',
 		'show character p pinknormal at center with fadeIn',
 		'p:pinknormal Kanina ka pa ba dito?',
-		'player Hindi naman kararating ko lang din eto para sayo.....',
-		'hide character p',
-		'show character p pinkhappy at center',
-		'p:pinkhappy Salamat!',
-		'hide character p',
-		'show character p pinknormal at center',
+		'player Hindi naman kararating ko lang din',
+		'p:pinknormal Prince I have to ask something',
+		'player What is it?',
+		{
+			'Choice': {
+				'Dialog': 'p:pinknormal How can I make a numbered list in HTML?',
+				'happy': {
+					'Text': 'ol',
+					'Do':'show character p pinkhappy at center'
+
+				},
+				'Angry': {
+					'Text': 'ul',
+					'Do': 'jump princessAngry'
+				}
+			}
+		}, 
+		'p:pinkhappy Thank you Prince!',
+		'player I\'ts an honour Princess', 
 		'player Nagugutom ka naba? Sandali babalik ako kukuha lang ako ng makakain natin',
 		'p:pinknormal Sige!',
+		'stop music musicgarden',
 		
 		//KIDNAP SCENE
 		'show scene garden with fadeIn',
 		'player Princess??',
 
 		//Castle Scene 
+		'play music musiccastle with volume 40 loop',
 		'show scene castle with fadeIn',
 		'player Paumanhin mahal na hari ngunit nawawala po si princess Jasmine',
+		'stop music musiccastle',
 		'show character k surprised at center with fadeIn',
 		'k:surprised Ano! Diba magkasama kayo? Paano syang nawala?',
 		'player Umalis lamang ako para kumuha ng pagkain pero pag balik ko wala na sya',
 		'show character g angry at right with fadeIn',
-		'g:angry Mahal na hari may sulat pong dumating para sainyo'
+		'g:angry Mahal na hari may sulat pong dumating para sainyo',
+		'To see what\'s inside of the letter ',
+		{
+			'Choice': {
+				'Dialog': 'How to insert Image in HTML',
+				'imgcorrect': {
+					'Text': 'img src',
+					'Do':'show character k normal at center'
 
-
-		// {
-		// 	'Choice': {
-		// 		'Dialog': 'k Have you already read some documentation?',
-		// 		'Yes': {
-		// 			'Text': 'Yes',
-		// 			'Do': 'jump Yes'
-		// 		},
-		// 		'No': {
-		// 			'Text': 'No',
-		// 			'Do': 'jump No'
-		// 		}
-		// 	}
-		// }
-	]
-
+				},
+				'imgwrong': {
+					'Text': 'image source',
+					'Do': 'jump Mali'
+				}
+			}
+		}, 
+		'play music musiccastle with volume 40 loop',
+		'k Prince {{player.name}} this letter said that you need to save princess Jasmine',
+	],
+		
 	// 'Yes': [
-	// 	'y Thats awesome!',
-	// 	'y Then you are ready to go ahead and create an amazing Game!',
-	// 	'y I can’t wait to see what story you’ll tell!',
-	// 	'end'
+	// 	'show character k happy at center',
+	// 	'k:happy Very Good!',
 	// ],
 
-	// 'No': [
-
-	// 	'y You can do it now.',
-
-	// 	'show message Help',
-
-	// 	'y Go ahead and create an amazing Game!',
-	// 	'y I can’t wait to see what story you’ll tell!',
-	// 	'end'
-	// ]
+	'No': [
+		'show character k angry at center',
+		'k:angry You Traitor!',
+		'end'
+	],
+	'Mali':[
+		'show character k angry at center',
+		'k:angry You can go now! and don\'t ever come back',
+		'end'
+	],
+	'guardWrong':[
+		'show character g angry at left',
+		'g:angry You will not see the Princess',
+		'end'
+	],
+	'princessAngry':[
+		'show character p pinkangry at center',
+		'p:pinkangry I hate you'
+	] 
 });
