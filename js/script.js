@@ -210,7 +210,7 @@ monogatari.script ({
 		'show character k happy at center',
 		'k:happy Prince {{player.name}} Welcome to our Kingdom!',
 		'show character k normal at center',
-		'player Nais ko sana ipaalam sainyo mahal na hari na gusto ko sanang mamasyal kami ni Princess Jasmine bago maganap ang kasalan bukas?',
+		'player Your majesty may I request to go out with Princess Jasmine before the wedding?',
 		'stop music musiccastle',
 		{
 			'Choice': {
@@ -230,11 +230,11 @@ monogatari.script ({
 				},
 			}
 		}, 
-		'k:happy Tama..Nasa silid sya ngayon..',
+		'k:happy Yes! She\'s in her room..',
 		'show character k normal at center',
-		'k Guard! Puntahan mo si princess Jasmine sa kanyang silid sabihin mo nandito si Prince {{player.name}}',
+		'k Guard! Kindly go to our princess\'s room and tell her Prince {{player.name}} is here',
 		'show character g angry at right with fadeInRightBig',
-		'g:angry Masusunod mahal na hari!',	
+		'g:angry Yes your majesty!',	
 		// 'hide character k with fadeOut',
 		// 'hide character g with fadeOut',
 		
@@ -242,7 +242,7 @@ monogatari.script ({
 
 
 		'show scene room with fadeIn',
-		'Princess Room',
+		'Princess\'s Room',
 		'play sound knock',
 		'show character g normal at left with fadeInLeftBig',
 		'g Knock Knock...',
@@ -266,17 +266,17 @@ monogatari.script ({
 		}, 
 		'g:surprised I\'m happy to meet you your Majesty',
 		'show character g normal at left',
-		'g:normal  Mahal na prinsesa nais po kayong makita ng prinsipe',
+		'g:normal  My princess.. The prince wishes to see you',
 		'show character p normal at right with fadeInRightBig',
-		'p:normal Osige! Paki-sabi mag bibihis lang ako magkita na lamang kami sa aming tagpuan',
+		'p:normal Sure . Tell the prince i\'ll get change and i\'ll be seeing him shortly at our place',
 		'show character g angry at left',
-		'g:angry Masusunod mahal na prinsesa!',
+		'g:angry Yes your highness!',
 		// BACK TO CASTLE
 		'play music musiccastle with volume 40 loop',
 		'show scene castle with fadeIn',
 		'show character g normal at right with fadeInRight',
-		'g Pinapasabi po ng mahal na prinsesa na mag hahanda lamang po sya magkita nalang daw po kayo sa tagpuan',
-		'player Sige mauna na po ako sa tagpuan mahal na hari',
+		'g The princess wishes to tell you that she will be seeing you soon at the place',
+		'player Your majesty i\'ll be going first to our place. Thank you!',
 		'show character k normal at center with fadeIn',
 		'k Before you go',
 		{
@@ -298,13 +298,13 @@ monogatari.script ({
 			}
 		}, 
 		'k:happy Thank you very much',
-		'k:happy Sige na at mag-iingat ka!',
+		'k:happy Take care!',
 		'stop music musiccastle',
 		// GARDEN SCENE
 		'play music musicgarden with volume 40 loop',
 		'show scene garden with fadeIn',
 		'show character p pinknormal at center with fadeIn',
-		'p:pinknormal Kanina ka pa ba dito?',
+		'p:pinknormal Have you been waiting long?',
 		'player Hindi naman kararating ko lang din',
 		'p:pinknormal Prince I have to ask something',
 		'player What is it?',
