@@ -9,7 +9,15 @@ monogatari.action ('message').messages ({
 			<p><a href='https://developers.monogatari.io/documentation/'>Documentation</a> - Everything you need to know.</p>
 			<p><a href='https://monogatari.io/demo/'>Demo</a> - A simple Demo.</p>
 		`
+	},
+	'Letter': {
+		title: 'Letter to Prince',
+		subtitle: 'From Kidnappers',
+		body:`
+			<img src="assets/images/tobecontinued.jpg">
+		`
 	}
+
 });
 
 // Define the notifications used in the game
@@ -67,7 +75,8 @@ monogatari.assets ('videos', {
 
 // Define the images used in the game.
 monogatari.assets ('images', {
-	'flower': 'flower.jpg'
+	'flower': 'flower.jpg',
+	'letter': 'tobecontinued.jpg'
 });
 
 // Define the backgrounds for each scene.
@@ -159,7 +168,7 @@ monogatari.characters ({
 monogatari.script ({
 	// The game starts here.
 	'Start': [
-		'Before the wedding....',
+		'centered Before the wedding....',
 		'show scene castle with fadeIn',
 		'play music musiccastle with volume 40 loop',
 		'show character k normal at center with fadeIn',
@@ -232,7 +241,7 @@ monogatari.script ({
 		}, 
 		'k:happy Yes! She\'s in her room..',
 		'show character k normal at center',
-		'k Guard! Kindly go to our princess\'s room and tell her Prince {{player.name}} is here',
+		'k Guard! Kindly go to our princess\'s room and tell her Prince {{player.name}} is here.',
 		'show character g angry at right with fadeInRightBig',
 		'g:angry Yes your majesty!',	
 		// 'hide character k with fadeOut',
@@ -266,19 +275,19 @@ monogatari.script ({
 		}, 
 		'g:surprised I\'m happy to meet you your Majesty',
 		'show character g normal at left',
-		'g:normal  My princess.. The prince wishes to see you',
+		'g:normal  My princess.. The prince wishes to see you.',
 		'show character p normal at right with fadeInRightBig',
-		'p:normal Sure . Tell the prince i\'ll get change and i\'ll be seeing him shortly at our place',
+		'p:normal Sure . Tell the prince i\'ll get change and i\'ll be seeing him shortly at our place.',
 		'show character g angry at left',
 		'g:angry Yes your highness!',
 		// BACK TO CASTLE
 		'play music musiccastle with volume 40 loop',
 		'show scene castle with fadeIn',
 		'show character g normal at right with fadeInRight',
-		'g The princess wishes to tell you that she will be seeing you soon at the place',
+		'g The princess wishes to tell you that she will be seeing you soon at the place.',
 		'player Your majesty i\'ll be going first to our place. Thank you!',
 		'show character k normal at center with fadeIn',
-		'k Before you go',
+		'k Before you go..',
 		{
 			'Choice': {
 				'Dialog': 'k Do you know how to create a hyperlink?',
@@ -305,8 +314,8 @@ monogatari.script ({
 		'show scene garden with fadeIn',
 		'show character p pinknormal at center with fadeIn',
 		'p:pinknormal Have you been waiting long?',
-		'player Hindi naman kararating ko lang din',
-		'p:pinknormal Prince I have to ask something',
+		'player No I\'ve just arrived too.',
+		'p:pinknormal Prince I have to ask something.',
 		'player What is it?',
 		{
 			'Choice': {
@@ -324,8 +333,8 @@ monogatari.script ({
 		}, 
 		'p:pinkhappy Thank you Prince!',
 		'player I\'ts an honour Princess', 
-		'player Nagugutom ka naba? Sandali babalik ako kukuha lang ako ng makakain natin',
-		'p:pinknormal Sige!',
+		'player Are you hungry?. I\'ll just grab us something to eat.',
+		'p:pinknormal Sure!',
 		'stop music musicgarden',
 		
 		//KIDNAP SCENE
@@ -335,14 +344,16 @@ monogatari.script ({
 		//Castle Scene 
 		'play music musiccastle with volume 40 loop',
 		'show scene castle with fadeIn',
-		'player Paumanhin mahal na hari ngunit nawawala po si princess Jasmine',
+		'show character k normal at center with fadeIn',
+		'k:normal Prince {{player.name}} you\'re back where\'s Princess Jasmine?',
+		'player Your Majesty! I\'m sorry but Princess Jasmine is missing.',
 		'stop music musiccastle',
-		'show character k surprised at center with fadeIn',
-		'k:surprised Ano! Diba magkasama kayo? Paano syang nawala?',
-		'player Umalis lamang ako para kumuha ng pagkain pero pag balik ko wala na sya',
+		'show character k surprised at center',
+		'k:surprised Nanithefuckkk?! Weren\'t you with her? How can you lost her, you fool!',
+		'player I apologize your highness it seems Princess Jasmine is missing!',
 		'show character g angry at right with fadeIn',
-		'g:angry Mahal na hari may sulat pong dumating para sainyo',
-		'To see what\'s inside of the letter ',
+		'g:angry Your Majesty there is a letter for you...',
+		'To see what\'s inside of the letter. ',
 		{
 			'Choice': {
 				'Dialog': 'How to insert Image in HTML',
@@ -358,7 +369,12 @@ monogatari.script ({
 			}
 		}, 
 		'play music musiccastle with volume 40 loop',
-		'k Prince {{player.name}} this letter said that you need to save princess Jasmine',
+		'k Prince {{player.name}} this letter said that you need to save princess Jasmine here is the letter.',
+		'hide character k',
+		'hide character g',
+		'stop music musiccastle',
+		'show scene castle',
+		'show image letter center with fadeIn'
 	],
 		
 	// 'Yes': [
