@@ -34,7 +34,7 @@ button:hover {
 
 /* General Styling for Menu Screens */
 [data-screen] {
-
+	
 }
 
 /**
@@ -45,6 +45,7 @@ button:hover {
 
 /* Main Menu Styling */
 [data-screen="main"] {
+	background-image: url(./mainscreen.gif);
 
 }
 
