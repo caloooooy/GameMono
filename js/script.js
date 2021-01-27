@@ -187,51 +187,88 @@ monogatari.characters ({
 monogatari.script ({
 	// The game starts here.
 	'Start': [
-	
-		'prince So what is HTML?',
-		'hide character prince',
-		'show character prince normal at left with fadeIn',
-		'show image html at right',
-		'prince HTML stand for Hyper Text Markup Language and it is use for web browser',
 		'centered Before the wedding....',
 		'show scene castle with fadeIn',
 		'play music musiccastle with volume 40 loop',
 		'show character k normal at center with fadeIn',
 		'k Welcome to our HTML kingdom!',
 		'stop music musiccastle',
-		{
-			'Choice': {
-				'Dialog': 'k What is HTML?',
-				'Yes': {
-					'Text': 'HyperText Markup Language',
-					'Do': 'show character k happy at center'
+		'jump Choice1',
+			
+		// 'hide character k with fadeOut',
+		// 'hide character g with fadeOut',
+		
+		// SCENE PRINCESS ROOM  
 
-				},
-				'No': {
-					'Text': 'HyperText Mark Language',
-					'Do': 'jump No'	
-				},
-				
+	],
+		
+	// 'Yes': [
+	// 	'show character k happy at center',
+	// 	'k:happy Very Good!',
+	// ],
+
+	'Choice1':[
+		{'Choice': {
+			'Dialog': 'k What is HTML?',
+			'Yes': {
+				'Text': 'HyperText Markup Language',
+				'Do': 'show character k happy at center',
+				'Do':'jump Scene2',
+
 			},
-		}, 
-		
-		
+			'No': {
+				'Text': 'HyperText Mark Language',
+				'Do': 'jump No'	
+			},
+		}
+	}
+	
+],
+
+	'Scene2': [
 		'play music musiccastle with volume 40 loop',
 		'k:happy Very Good!',
 		'show character k normal at center',
 		'k What brings you here Prince....',
+		{
+			'Input': {
+				'Text': 'What is your name prince?',
+				'Validation': function (input) {
+					return input.trim ().length > 0;
+				},
+				'Save': function (input) {
+					this.storage ({
+						player: {
+							name: input
+						}
+					});
+					return true;
+				},
+				'Revert': function () {
+					this.storage ({
+						player: {
+							name: ''
+						}
+					});
+				},
+				'Warning': 'You must enter a name prince!'
+			}
+		},
+
 		'show character k happy at center',
 		'k:happy Prince {{player.name}} Welcome to our Kingdom!',
 		'show character k normal at center',
 		'player Your majesty may I request to go out with Princess Jasmine before the wedding?',
-		'stop music musiccastle',
-		{
-			'Choice': {
+		'jump Choice2',
+		],
+
+	'Choice2':[
+			{'Choice': {
 				'Dialog': 'k Before that I want to ask you what is the largest heading in HTML?',
 				'Wrong1': {
 					'Text': 'h6',
 					'Do':'jump Mali'
-
+	
 				},
 				'Wrong2': {
 					'Text': 'h3',
@@ -242,41 +279,48 @@ monogatari.script ({
 					'Do': 'show character k happy at center'	
 				},
 			}
-		}, 
+		},
 		'k:happy Yes! She\'s in her room..',
 		'show character k normal at center',
 		'k Guard! Kindly go to our princess\'s room and tell her Prince {{player.name}} is here.',
 		'show character g angry at right with fadeInRightBig',
-		'g:angry Yes your majesty!',	
-		// 'hide character k with fadeOut',
-		// 'hide character g with fadeOut',
-		
-		// SCENE PRINCESS ROOM  
+		'g:angry Yes your majesty!',
+		'jump Scene3',
+		],
 
-
+	'Scene3': [
+		'stop music musiccastle',
 		'show scene room with fadeIn',
 		'Princess\'s Room',
 		'play sound knock',
 		'show character g normal at left with fadeInLeftBig',
 		'g Knock Knock...',
-		{
-			'Choice': {
-				'Dialog': 'g What is the correct HTML linebreak?',
-				'guardWrong1': {
-					'Text': 'lb',
-					'Do':'jump Choice'
+		'jump Choice3',
+	],
 
-				},
-				'guardRight': {
-					'Text': 'br',
-					'Do': 'show character g surprised at left'
-				},
-				'guardWrong2': {
-					'Text': 'break',
-					'Do': 'jump guardWrong'	
-				},
-			}
-		}, 
+
+	'Choice3':[
+		{'Choice': {
+			'Dialog': 'g What is the correct HTML linebreak?',
+			'guardWrong1': {
+				'Text': 'lb',
+				'Do':'jump guardWrong'
+
+			},
+			'guardRight': {
+				'Text': 'br',
+				'Do': 'show character g surprised at left',
+				'Do': 'jump Scene4',
+			},
+			'guardWrong2': {
+				'Text': 'break',
+				'Do': 'jump guardWrong'
+				
+			},
+		}
+	}, 
+],
+	'Scene4': [
 		'g:surprised I\'m happy to meet you your Majesty',
 		'show character g normal at left',
 		'g:normal  My princess.. The prince wishes to see you.',
@@ -292,24 +336,32 @@ monogatari.script ({
 		'player Your majesty i\'ll be going first to our place. Thank you!',
 		'show character k normal at center with fadeIn',
 		'k Before you go..',
-		{
-			'Choice': {
-				'Dialog': 'k Do you know how to create a hyperlink?',
-				'guardWrong1': {
-					'Text': 'a url',
-					'Do':'jump Mali'
+		'jump Choice4',
+	],
+	
+	'Choice4': [
+			{
+		'Choice': {
+			'Dialog': 'k Do you know how to create a hyperlink?',
+			'guardWrong1': {
+				'Text': 'a url',
+				'Do':'jump guardWrong1'
 
-				},
-				'Right': {
-					'Text': 'a href',
-					'Do': 'show character k happy at center'
-				},
-				'guardWrong2': {
-					'Text': 'a name',
-					'Do': 'jump Mali'	
-				},
-			}
-		}, 
+			},
+			'Right': {
+				'Text': 'a href',
+				'Do': 'show character k happy at center',
+				'Do': 'jump Scene5',
+			},
+			'guardWrong2': {
+				'Text': 'a name',
+				'Do': 'jump guardWrong1'	
+			},
+		}
+	},
+],
+
+	'Scene5': [
 		'k:happy Thank you very much',
 		'k:happy Take care!',
 		'stop music musiccastle',
@@ -321,27 +373,34 @@ monogatari.script ({
 		'player No I\'ve just arrived too.',
 		'p:pinknormal Prince I have to ask something.',
 		'player What is it?',
-		{
-			'Choice': {
-				'Dialog': 'p:pinknormal How can I make a numbered list in HTML?',
-				'happy': {
-					'Text': 'ol',
-					'Do':'show character p pinkhappy at center'
+		'jump Choice5',
+	],
 
-				},
-				'Angry': {
-					'Text': 'ul',
-					'Do': 'jump princessAngry'
-				}
+
+	'Choice5': [
+		{'Choice': {
+			'Dialog': 'p:pinknormal How can I make a numbered list in HTML?',
+			'happy': {
+				'Text': 'ol',
+				'Do':'show character p pinkhappy at center',
+				'Do': 'jump Scene6',
+
+			},
+			'Angry': {
+				'Text': 'ul',
+				'Do': 'jump princessAngry'
 			}
-		}, 
+		}
+	}, 
+],
+
+	'Scene6': [
 		'p:pinkhappy Thank you Prince!',
 		'player I\'ts an honour Princess', 
 		'player Are you hungry?. I\'ll just grab us something to eat.',
-		'show character p normal at center',
 		'p:pinknormal Sure!',
 		'stop music musicgarden',
-		
+
 		//KIDNAP SCENE
 		'show scene garden with fadeIn',
 		'player Princess??',
@@ -358,20 +417,29 @@ monogatari.script ({
 		'show character g angry at right with fadeIn',
 		'g:angry Your Majesty there is a letter for you...',
 		'To see what\'s inside of the letter. ',
-		{
-			'Choice': {
-				'Dialog': 'How to insert Image in HTML?',
-				'imgcorrect': {
-					'Text': 'img src',
-					'Do':'show character k normal at center'
+		'jump Choice6',
+	],
 
-				},
-				'imgwrong': {
-					'Text': 'image source',
-					'Do': 'jump Mali'
-				}
+
+	'Choice6': [
+		{'Choice': {
+			'Dialog': 'How to insert Image in HTML',
+			'imgcorrect': {
+				'Text': 'img src',
+				'Do':'show character k normal at center',
+				'Do': 'jump Scene7',
+
+
+			},
+			'imgwrong': {
+				'Text': 'image source',
+				'Do': 'jump No2'
 			}
-		}, 
+		}
+	}, 
+],
+
+	'Scene7': [
 		'play music musiccastle with volume 40 loop',
 		'k Prince {{player.name}} this letter said that you need to save princess Jasmine here is the letter.',
 		'hide character k',
@@ -379,31 +447,52 @@ monogatari.script ({
 		'stop music musiccastle',
 		'show scene castle',
 		'show image letter center with fadeIn',
-		
+		'end'
 	],
-		
-	'Yes': [
-		'show character k happy at center',
-		'k:happy Very Good!',
-	],
+
+
+	//No Answers Labels
 
 	'No': [
 		'show character k angry at center',
 		'k:angry You Traitor!',
-	
+		'k {{player.name}}Please return to choices and select the correct answer.',
+		'jump Choice1',
 	],
+
 	'Mali':[
 		'show character k angry at center',
 		'k:angry You can go now! and don\'t ever come back',
-		'end'
+		'k {{player.name}}Please return to choices and select the correct answer.',
+		'jump Choice2',
 	],
+
 	'guardWrong':[
 		'show character g angry at left',
 		'g:angry You will not see the Princess',
-		'end'
+		'k {{player.name}}Please return to choices and select the correct answer.',
+		'jump Choice3',
+
+	],
+
+	'guardWrong1':[
+		'show character g angry at left',
+		'g:angry You will not see the Princess',
+		'k {{player.name}}Please return to choices and select the correct answer.',
+		'jump Choice4',
+		
 	],
 	'princessAngry':[
 		'show character p pinkangry at center',
-		'p:pinkangry I hate you'
-	] 
-});
+		'p:pinkangry I hate you',
+		'p {{player.name}}Please return to choices and select the correct answer.',
+		'jump Choice5',
+	],
+
+	'No2': [
+		'show character k angry at center',
+		'k:angry You Traitor!',
+		'k {{player.name}}Please return to choices and select the correct answer.',
+		'jump Choice6',
+	],
+  });
