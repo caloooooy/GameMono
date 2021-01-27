@@ -184,9 +184,40 @@ monogatari.characters ({
 
 });
 
-monogatari.script ({ 
+monogatari.script ({
 	// The game starts here.
 	'Start': [
+		'show character prince normal at center with fadeIn',
+		'prince:normal Hello! I am your guide to this game and You are?',
+		{
+			'Input': {
+				'Text': 'What is your name Prince?',
+				'Validation': function (input) {
+					return input.trim ().length > 0;
+				},
+				'Save': function (input) {
+					this.storage ({
+						player: {
+							name: input
+						}
+					});
+					return true;
+				},
+				'Revert': function () {
+					this.storage ({
+						player: {
+							name: ''
+						}
+					});
+				},
+				'Warning': 'You must enter a name prince!'
+			}
+		},
+		'show character prince happy at center',
+		'clear',
+		'prince:happy Hi Prince {{player.name}} Welcome to our game called HTML Kingdom.',
+		'show character prince normal at center',
+		'prince:normal This game is where you can Learn HTML with a twist of story.',
 		'centered Before the wedding....',
 		'show scene castle with fadeIn',
 		'play music musiccastle with volume 40 loop',
@@ -229,31 +260,7 @@ monogatari.script ({
 		'play music musiccastle with volume 40 loop',
 		'k:happy Very Good!',
 		'show character k normal at center',
-		'k What brings you here Prince....',
-		{
-			'Input': {
-				'Text': 'What is your name prince?',
-				'Validation': function (input) {
-					return input.trim ().length > 0;
-				},
-				'Save': function (input) {
-					this.storage ({
-						player: {
-							name: input
-						}
-					});
-					return true;
-				},
-				'Revert': function () {
-					this.storage ({
-						player: {
-							name: ''
-						}
-					});
-				},
-				'Warning': 'You must enter a name prince!'
-			}
-		},
+	
 
 		'show character k happy at center',
 		'k:happy Prince {{player.name}} Welcome to our Kingdom!',
@@ -495,4 +502,4 @@ monogatari.script ({
 		'k {{player.name}}Please return to choices and select the correct answer.',
 		'jump Choice6',
 	],
-  });
+  }); 
