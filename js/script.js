@@ -76,7 +76,8 @@ monogatari.assets ('videos', {
 // Define the images used in the game.
 monogatari.assets ('images', {
 	'flower': 'flower.jpg',
-	'letter': 'tobecontinued.jpg'
+	'letter': 'tobecontinued.jpg',
+	'html': 'whatishtml.png'
 });
 
 // Define the backgrounds for each scene.
@@ -155,6 +156,24 @@ monogatari.characters ({
         },
         default_expression: 'normal',
 	},
+	'prince':{
+		name: 'Prince Narrator',
+		color: '#decaff',
+		directory: 'prince',
+		sprites: {
+			angry: 'princeangry.png',
+			normal: 'princenormal.png',
+			happy: 'princehappy.png',
+			sad: 'princesad.png'
+		},
+		expressions: {
+			angry: 'expression/princesangryexpression.png.',
+			normal: 'expression/princenormalexpression.png.',
+			happy: 'expression/princehappyexpression.png.',
+			sad: 'expression/princesadexpression.png.'
+		},
+		default_expression: 'normal',
+	},
 	'kn': {
 		name: 'Swane'
 	},
@@ -168,6 +187,12 @@ monogatari.characters ({
 monogatari.script ({
 	// The game starts here.
 	'Start': [
+	
+		'prince So what is HTML?',
+		'hide character prince',
+		'show character prince normal at left with fadeIn',
+		'show image html at right',
+		'prince HTML stand for Hyper Text Markup Language and it is use for web browser',
 		'centered Before the wedding....',
 		'show scene castle with fadeIn',
 		'play music musiccastle with volume 40 loop',
@@ -179,43 +204,22 @@ monogatari.script ({
 				'Dialog': 'k What is HTML?',
 				'Yes': {
 					'Text': 'HyperText Markup Language',
-					'Do': 'show character k happy at center',
+					'Do': 'show character k happy at center'
 
 				},
 				'No': {
 					'Text': 'HyperText Mark Language',
 					'Do': 'jump No'	
 				},
-			}
+				
+			},
 		}, 
+		
+		
 		'play music musiccastle with volume 40 loop',
 		'k:happy Very Good!',
 		'show character k normal at center',
 		'k What brings you here Prince....',
-		{
-			'Input': {
-				'Text': 'What is your name prince?',
-				'Validation': function (input) {
-					return input.trim ().length > 0;
-				},
-				'Save': function (input) {
-					this.storage ({
-						player: {
-							name: input
-						}
-					});
-					return true;
-				},
-				'Revert': function () {
-					this.storage ({
-						player: {
-							name: ''
-						}
-					});
-				},
-				'Warning': 'You must enter a name prince!'
-			}
-		},
 		'show character k happy at center',
 		'k:happy Prince {{player.name}} Welcome to our Kingdom!',
 		'show character k normal at center',
@@ -260,7 +264,7 @@ monogatari.script ({
 				'Dialog': 'g What is the correct HTML linebreak?',
 				'guardWrong1': {
 					'Text': 'lb',
-					'Do':'jump guardWrong'
+					'Do':'jump Choice'
 
 				},
 				'guardRight': {
@@ -334,6 +338,7 @@ monogatari.script ({
 		'p:pinkhappy Thank you Prince!',
 		'player I\'ts an honour Princess', 
 		'player Are you hungry?. I\'ll just grab us something to eat.',
+		'show character p normal at center',
 		'p:pinknormal Sure!',
 		'stop music musicgarden',
 		
@@ -355,7 +360,7 @@ monogatari.script ({
 		'To see what\'s inside of the letter. ',
 		{
 			'Choice': {
-				'Dialog': 'How to insert Image in HTML',
+				'Dialog': 'How to insert Image in HTML?',
 				'imgcorrect': {
 					'Text': 'img src',
 					'Do':'show character k normal at center'
@@ -373,18 +378,19 @@ monogatari.script ({
 		'hide character g',
 		'stop music musiccastle',
 		'show scene castle',
-		'show image letter center with fadeIn'
+		'show image letter center with fadeIn',
+		
 	],
 		
-	// 'Yes': [
-	// 	'show character k happy at center',
-	// 	'k:happy Very Good!',
-	// ],
+	'Yes': [
+		'show character k happy at center',
+		'k:happy Very Good!',
+	],
 
 	'No': [
 		'show character k angry at center',
 		'k:angry You Traitor!',
-		'end'
+	
 	],
 	'Mali':[
 		'show character k angry at center',
