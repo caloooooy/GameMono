@@ -184,7 +184,7 @@ monogatari.characters ({
 
 });
 
-monogatari.script ({
+monogatari.script ({ 
 	// The game starts here.
 	'Start': [
 		'centered Before the wedding....',
