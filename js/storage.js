@@ -4,5 +4,9 @@
 monogatari.storage ({
 	player: {
 		name: ''
+	},
+
+	challenge1: {
+		ch1: '<p></p>'
 	}
 });
