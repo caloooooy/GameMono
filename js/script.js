@@ -70,6 +70,7 @@ monogatari.assets ('sounds', {
 
 // Define the videos used in the game.
 monogatari.assets ('videos', {
+	'chapter2': 'chapter2.mp4'
 
 });
 
@@ -87,8 +88,8 @@ monogatari.assets ('scenes', {
 	'garden': 'bggarden.jpg',
 	'scene8': 'scene8bg.jpg',
 	'scene9': 'scene9bg.jpg',
-	'scene10': 'scene10bg.jpg'
-
+	'scene10': 'scene10bg.jpg',
+	'chapter2': 'chapter2,jpg'
 });
 
 
@@ -370,6 +371,7 @@ monogatari.script ({
 ],
 
 	'Scene5': [
+		'show character k happy at center',
 		'k:happy Thank you very much',
 		'k:happy Take care!',
 		'stop music musiccastle',
@@ -455,7 +457,12 @@ monogatari.script ({
 		'stop music musiccastle',
 		'show scene castle',
 		'show image letter center with fadeIn',
-		'end'
+		'jump Chapter2'
+	],
+	'Chapter2':[
+		'show video chapter2',
+		'jump Scene8'
+		
 	],
 	// Sir Ryan Section
 	'Scene8':[
@@ -486,8 +493,19 @@ monogatari.script ({
 	
 	
 	],
-	//carlo Section
 
+	
+	//carlo Section
+	'Scene9':[
+		'show scene scene9 with fadeIn',
+		'{{player.name}} Matagal na po ba kayong nakatira dito sa kagubatan?',
+		'show character maskChar at center',
+		'maskChar Matagal tagal na din.',
+		'{{player.name}} Bakit? Wala ka po bang asawa o anak?',
+		'maskChar Matagal tagal na din.',
+		
+
+	],
 	//No Answers Labels
 
 	'No': [
