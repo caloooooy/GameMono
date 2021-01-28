@@ -53,7 +53,8 @@ monogatari.assets ('gallery', {
 // Define the music used in the game.
 monogatari.assets ('music', {
 	'musiccastle': 'bgmusiccastle.mp3',
-	'musicgarden': 'bgmusicgarden.mp3'
+	'musicgarden': 'bgmusicgarden.mp3',
+	'scene8': 'scene8music.mp3',
 
 });
 
@@ -89,7 +90,8 @@ monogatari.assets ('scenes', {
 	'scene8': 'scene8bg.jpg',
 	'scene9': 'scene9bg.jpg',
 	'scene10': 'scene10bg.jpg',
-	'chapter2': 'chapter2,jpg'
+	'chapter2': 'chapter2.jpg',
+	'black': 'blackscene.jpg'
 });
 
 
@@ -194,6 +196,10 @@ monogatari.characters ({
 		sprites: {
 			normal: 'maskchar.png'
 		},
+		expressions: {
+			normal: 'expression/maskCharexpression.png.'
+		},
+		default_expression: 'normal',
 	}
 
 });
@@ -231,6 +237,7 @@ monogatari.script ({
 		'prince:happy Hi Prince {{player.name}} Welcome to our game called HTML Kingdom.',
 		'show character prince normal at center',
 		'prince:normal This game is where you can Learn HTML with a twist of story.',
+		'hide character prince happy with fadeOut',
 		'centered Before the wedding....',
 		'show scene castle with fadeIn',
 		'play music musiccastle with volume 40 loop',
@@ -330,6 +337,7 @@ monogatari.script ({
 	}, 
 ],
 	'Scene4': [
+		'show character g surprised at left',
 		'g:surprised I\'m happy to meet you your Majesty',
 		'show character g normal at left',
 		'g:normal  My princess.. The prince wishes to see you.',
@@ -405,9 +413,11 @@ monogatari.script ({
 ],
 
 	'Scene6': [
+		'show character p pinkhappy at center',
 		'p:pinkhappy Thank you Prince!',
 		'player I\'ts an honour Princess', 
 		'player Are you hungry?. I\'ll just grab us something to eat.',
+		'show character p pinknormal at center',
 		'p:pinknormal Sure!',
 		'stop music musicgarden',
 
@@ -451,6 +461,7 @@ monogatari.script ({
 
 	'Scene7': [
 		'play music musiccastle with volume 40 loop',
+		'show character k normal at center',
 		'k Prince {{player.name}} this letter said that you need to save princess Jasmine here is the letter.',
 		'hide character k',
 		'hide character g',
@@ -459,44 +470,80 @@ monogatari.script ({
 		'show image letter center with fadeIn',
 		'jump Chapter2'
 	],
+	'Chapter2':[
+		'show scene chapter2 with fadeIn',
+		'jump Scene8',
+		
+	],
 	
 	// Sir Ryan Section
-	'Scene8':[
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		'Scene8':[ 
+			'play music scene8 with volume 40 loop',
+			'show scene black',
+			'centered inside the letter',
+			'Kailangan mong pumunta sa CSS cave para maaligtas ang prinsesa',
+			'show scene castle',
+			'show character prince angry at left with fadeIn',
+			'show character k angry at center with fadeIn ',
+			'show character g angry at right with fadeIn',
+			'prince:angry agad na umalis ang prinsipe para hanapin at iligtas ang prinsesa',
+			'hide character prince with fadeOut',
+			'k:angry Guard imbistigahan ang pagkawala ng princesa',
+			'hide character k angry at center with fadeOut ',
+			'g:angry masusunod po mahal na hari',
+			'hide character g angry at right with fadeOut',
+			'show scene black',
+			'centered *Sa kalagitnaan ng kanyang pag lalakbay may makakasalubong syang nakaputing maskara*',
+			'show scene scene8 with fadeIn',
+			'show character maskChar normal at right with fadeIn',
+			'{{player.name}} Hello? Sir? Maari po ba akong mag tanong kung saan matatagpuan ang CSS Cave?',
+			'maskChar Sino ka? Anong kailangan mo?! Bakit gusto mo pumunta sa CSS Cave?!!',
+			'{{player.namen}} Ako po si Prince {{player.name}}. Nang galing po ako sa kahariang JavaScript. Naparito po ako upang iligtas ang aking prinsesa ayon sa sulat na pinadala nila sa CSS Cave ko lamang matatagpuan ang aking prinsesa.',
+			'maskChar Pasensya kana ngunit hindi kita matutulungan. Bumalik kana lamang sa inyong kaharian.',
+			'show character prince angry Ngunit bakit?!! Hindi po ako babalik ng aming kaharian hangga\'t di ko kasama ang aking prinsesa.',
+			'maskChar Mapanganib ang lugar na yon.',
+			'maskChar Sino man ang pumunta don ay di na nakakabalik kaya wag ka na lamang tumuloy!',
+			'{{playe.name}} Pero kailangan ko po mailigtas ang aking prinsesa.',
+			'maskChar Sige tumuloy ka ng pareho kayong di na makabalik sa inyong mga kaharian!',
+			'{{player.name}} Pasensya na po pero wala na po akong pakealam kung ano mang kapahamakan ang nakaabang sakin patungo don handa kong isugal ang buhay ko para sa aking prinsesa',
+			'maskChar Narinig ko na yan pang ilan kana sa mga matitigas ang ulo na binalaan ko pero tumuloy sila at di na muli nakabalik.',
+			'{{player.name}} Ano po bang meron sa lugar na yon at madaming hindi nakakabalik?',
+			'maskChar Mahiwaga at mapanlinlang ang kuweba na yon marami kang pag susubok na kahaharapin bago mo marating ang dulo non at kung di ka palarin na malagpasan ang mga pagsubok.. habang buhay ka ng makukulong sa kuweba na iyon.',
+			'maskChar Ang tanong handa ka bang ibuwis ang buhay mo mailigtas lang ang prinsesa mo?',
+			'{{player.name}} Opo! Ako ang dahilan kung bakit nakuha sya ng mga itim na bandido kaya ako din ang gagawa ng paraan upang maibalik sya sa aming kaharian.',
+			'maskChar Hanga ako sa iyong katapangan bata kaya sige ituturo ko sa iyo ang daan',
+			'{{player.name}}Talaga po? Maraming maraming salamat!',
+			'maskChar Halika\'t sundan mo ko.',	
+			'jump Scene9'
 	],
 
-
-
-
-
-
-	
 	//carlo Section
+	'Scene9':[
+		'show scene scene9 with fadeIn',
+		'{{player.name}} Matagal na po ba kayong nakatira dito sa kagubatan?',
+		'show character maskChar at center',
+		'maskChar Matagal-tagal na din.',
+		'{{player.name}} Bakit? Wala ka po bang asawa o anak?',
+		'maskChar WALA',
+		'{{player.name}} Gusto nyo po ba manilbihan na lamang sa kaharian ko? Malungkot po dito sa kagubatan.',
+		'maskChar Hindi na. Dito na lamang ako upang magabayan ang iba pang gustong pumunta sa CSS Cave.',
+		'{{player.name}} Sige.. pero kung sakaling magbago ang isip mo pag balik ko pwede ka sumama samin ng aking prinsesa.',
+		'maskChar At talagang sigurado kang makakabalik ka?',
+		'{{player.name}} Oo naman po no! Kailangan kong makasiguradong makakabalik ako.',
+		'{{player.name}} Kailangan ako ng kaharian namin at nangako ako sa hari na ibabalik at ililigtas ko ang prinsesa.',
+		'maskChar Goodluck!',
+		'{{player.name}} May alam po ba kayo tungkol sa mga pagsubok ng CSS Cave?',
+		'hide scene scene9',
+		'maskChar',
+		'show scene scene10 with fadeIn',
+		'maskChar Hanggang dito nalang kita maihahatid Prince {{player.name}} diretsuhin mo lang ung daan na \'to',
+		'{{player.name}} Bakit po?',
+		'maskChar Dito na ang sagradong lugar ng kuweba di na ako maaring sumama.',
+		'{{player.name}} Ah ganon po ba? Sige po. Maraming salamat po.',
+		'maskChar Walang anuman! Mag-iingat ka sana maligtas mo ang iyong prinsesa. Hihintayin ko ang pag babalik mo sa lagusan.',
+		'{{player.name}} Opo maraming maraming salamat po sa tulong nyo sir.'
+
+	],
 	
 	//No Answers Labels
 
@@ -507,24 +554,20 @@ monogatari.script ({
 		'k Prince {{player.name}} Please return to choices and select the correct answer.',
 		'jump Choice1',
 	],
-	'No2': [
-		'show character k angry at center',
-		'k:angry You Traitor!',
-		'k Prince {{player.name}} Please return to choices and select the correct answer.',
-		'jump Choice6',
-	],
+	
 
 	'Mali':[
 		'show character k angry at center',
 		'k:angry You can go now! and don\'t ever come back',
-		'k Prince {{player.name}} Please return to choices and select the correct answer.',
 		'show character k normal at center',
+		'k Prince {{player.name}} Please return to choices and select the correct answer.',
 		'jump Choice2',
 	],
 
 	'guardWrong':[
 		'show character g angry at left',
 		'g:angry You will not see the Princess',
+		'show character g normal at left',
 		'g Prince {{player.name}} Please return to choices and select the correct answer.',
 		'jump Choice3',
 
@@ -533,16 +576,24 @@ monogatari.script ({
 	'guardWrong1':[
 		'show character g angry at left',
 		'g:angry You will not see the Princess',
-		'g Prince {{player.name}}Please return to choices and select the correct answer.',
+		'show character g normal at left',
+		'g Prince {{player.name}} Please return to choices and select the correct answer.',
 		'jump Choice4',
 		
 	],
 	'princessAngry':[
 		'show character p pinkangry at center',
 		'p:pinkangry I hate you',
-		'show character p normal at center',
-		'p Prince{{player.name}} Please return to choices and select the correct answer.',
+		'show character p pinknormal at center',
+		'p:pinknormal Prince {{player.name}} Please return to choices and select the correct answer.',
 		'jump Choice5',
+	],
+	'No2': [
+		'show character k angry at center',
+		'k:angry You Traitor!',
+		'show character k normal at center',
+		'k Prince {{player.name}} Please return to choices and select the correct answer.',
+		'jump Choice6',
 	],
 	// Sir Ryan Section
 
