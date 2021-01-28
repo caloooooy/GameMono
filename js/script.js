@@ -84,7 +84,11 @@ monogatari.assets ('images', {
 monogatari.assets ('scenes', {
 	'castle': 'bgcastle.jpg',
 	'room' : 'bgprincessroom.jpg',
-	'garden': 'bggarden.jpg'
+	'garden': 'bggarden.jpg',
+	'scene8': 'scene8bg.jpg',
+	'scene9': 'scene9bg.jpg',
+	'scene10': 'scene10bg.jpg'
+
 });
 
 
@@ -94,6 +98,7 @@ monogatari.characters ({
 		name: 'Yui',
 		color: '#5bcaff'
 	},
+	
 	'k': {
 		name: 'King Harry',
 		color: '#decaff',
@@ -181,6 +186,14 @@ monogatari.characters ({
 		name: '{{player.name}}',
 		color: '#decaff'
 	},
+	'maskChar': {
+		name: 'Stranger',
+		color: '#decaff',
+		directory: 'maskchar',
+		sprites: {
+			normal: 'maskchar.png'
+		},
+	}
 
 });
 
@@ -214,7 +227,6 @@ monogatari.script ({
 			}
 		},
 		'show character prince happy at center',
-		'clear',
 		'prince:happy Hi Prince {{player.name}} Welcome to our game called HTML Kingdom.',
 		'show character prince normal at center',
 		'prince:normal This game is where you can Learn HTML with a twist of story.',
@@ -222,21 +234,12 @@ monogatari.script ({
 		'show scene castle with fadeIn',
 		'play music musiccastle with volume 40 loop',
 		'show character k normal at center with fadeIn',
-		'k Welcome to our HTML kingdom!',
+		'k Welcome to HTML kingdom!',
 		'stop music musiccastle',
 		'jump Choice1',
-			
-		// 'hide character k with fadeOut',
-		// 'hide character g with fadeOut',
-		
-		// SCENE PRINCESS ROOM  
-
 	],
 		
-	// 'Yes': [
-	// 	'show character k happy at center',
-	// 	'k:happy Very Good!',
-	// ],
+	
 
 	'Choice1':[
 		{'Choice': {
@@ -258,12 +261,10 @@ monogatari.script ({
 
 	'Scene2': [
 		'play music musiccastle with volume 40 loop',
+		'show character k happy at center',
 		'k:happy Very Good!',
 		'show character k normal at center',
-	
-
-		'show character k happy at center',
-		'k:happy Prince {{player.name}} Welcome to our Kingdom!',
+		'k:normal Prince {{player.name}} Welcome to our Kingdom!',
 		'show character k normal at center',
 		'player Your majesty may I request to go out with Princess Jasmine before the wedding?',
 		'jump Choice2',
@@ -456,28 +457,65 @@ monogatari.script ({
 		'show image letter center with fadeIn',
 		'end'
 	],
+	// Sir Ryan Section
+	'Scene8':[
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	],
+	//carlo Section
 
 	//No Answers Labels
 
 	'No': [
 		'show character k angry at center',
 		'k:angry You Traitor!',
-		'k {{player.name}}Please return to choices and select the correct answer.',
+		'show character k normal at center',
+		'k Prince {{player.name}} Please return to choices and select the correct answer.',
 		'jump Choice1',
+	],
+	'No2': [
+		'show character k angry at center',
+		'k:angry You Traitor!',
+		'k Prince {{player.name}} Please return to choices and select the correct answer.',
+		'jump Choice6',
 	],
 
 	'Mali':[
 		'show character k angry at center',
 		'k:angry You can go now! and don\'t ever come back',
-		'k {{player.name}}Please return to choices and select the correct answer.',
+		'k Prince {{player.name}} Please return to choices and select the correct answer.',
+		'show character k normal at center',
 		'jump Choice2',
 	],
 
 	'guardWrong':[
 		'show character g angry at left',
 		'g:angry You will not see the Princess',
-		'k {{player.name}}Please return to choices and select the correct answer.',
+		'g Prince {{player.name}} Please return to choices and select the correct answer.',
 		'jump Choice3',
 
 	],
@@ -485,21 +523,46 @@ monogatari.script ({
 	'guardWrong1':[
 		'show character g angry at left',
 		'g:angry You will not see the Princess',
-		'k {{player.name}}Please return to choices and select the correct answer.',
+		'g Prince {{player.name}}Please return to choices and select the correct answer.',
 		'jump Choice4',
 		
 	],
 	'princessAngry':[
 		'show character p pinkangry at center',
 		'p:pinkangry I hate you',
-		'p {{player.name}}Please return to choices and select the correct answer.',
+		'show character p normal at center',
+		'p Prince{{player.name}} Please return to choices and select the correct answer.',
 		'jump Choice5',
 	],
+	// Sir Ryan Section
 
-	'No2': [
-		'show character k angry at center',
-		'k:angry You Traitor!',
-		'k {{player.name}}Please return to choices and select the correct answer.',
-		'jump Choice6',
-	],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Carlo Section
+
   }); 

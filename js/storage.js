@@ -7,6 +7,6 @@ monogatari.storage ({
 	},
 
 	challenge1: {
-		ch1: '<p></p>'
+		ch1: 'p'
 	}
 });
