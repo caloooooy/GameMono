@@ -459,11 +459,7 @@ monogatari.script ({
 		'show image letter center with fadeIn',
 		'jump Chapter2'
 	],
-	'Chapter2':[
-		'show video chapter2',
-		'jump Scene8'
-		
-	],
+	
 	// Sir Ryan Section
 	'Scene8':[
 
@@ -494,18 +490,14 @@ monogatari.script ({
 	
 	],
 
+
+
+
+
+
 	
 	//carlo Section
-	'Scene9':[
-		'show scene scene9 with fadeIn',
-		'{{player.name}} Matagal na po ba kayong nakatira dito sa kagubatan?',
-		'show character maskChar at center',
-		'maskChar Matagal tagal na din.',
-		'{{player.name}} Bakit? Wala ka po bang asawa o anak?',
-		'maskChar Matagal tagal na din.',
-		
-
-	],
+	
 	//No Answers Labels
 
 	'No': [
