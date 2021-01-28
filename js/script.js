@@ -230,6 +230,7 @@ monogatari.script ({
 		'prince:happy Hi Prince {{player.name}} Welcome to our game called HTML Kingdom.',
 		'show character prince normal at center',
 		'prince:normal This game is where you can Learn HTML with a twist of story.',
+		'hide character prince happy with fadeOut',
 		'centered Before the wedding....',
 		'show scene castle with fadeIn',
 		'play music musiccastle with volume 40 loop',
@@ -455,34 +456,48 @@ monogatari.script ({
 		'stop music musiccastle',
 		'show scene castle',
 		'show image letter center with fadeIn',
-		'end'
+		'jump Scene8'
 	],
 	// Sir Ryan Section
-	'Scene8':[
+	'Scene8':[ 
+		'centered inside the letter',
+		'Kailangan mong pumunta sa CSS cave para maaligtas ang prinsesa',
+		'show scene castle',
+		'show character prince angry at left with fadeIn',
+		'show character k angry at center with fadeIn ',
+		'show character g angry at right with fadeIn',
+		'prince agad na umalis ang prinsipe para hanapin at iligtas ang prinsesa',
+		'hide character prince with fadeOut',
+		'k Guard imbistigahan ang pagkawala ng princesa',
+		'hide character k angry at center with fadeOut ',
+		'g masusunod po mahal na hari',
+		'hide character g angry at right with fadeOut',
+		'show scene black',
+		'centered *Sa kalagitnaan ng kanyang pag lalakbay may makakasalubong syang nakaputing maskara*',
+		'show scene scene8 with fadeIn',
+		'show character prince normal at center', 'prince Hello? Sir? Maari po ba akong mag tanong kung saan matatagpuan ang CSS Cave?',
+		'show character maskChar normal at right with fadeIn',
+		'maskChar Sino ka? Anong kailangan mo?! Bakit gusto mo pumunta sa CSS Cave?!!',
+		'prince Ako po si Prince {{player name}}. Nang galing po ako sa kahariang JavaScript. Naparito po ako upang iligtas ang aking prinsesa ayon sa sulat na pinadala nila sa CSS Cave ko lamang matatagpuan ang aking prinsesa.',
+		'maskChar Pasensya kana ngunit hindi kita matutulungan. Bumalik kana lamang sa inyong kaharian.',
+		'show character prince angry Ngunit bakit?!! Hindi po ako babalik ng aming kaharian hangga\'t di ko kasama ang aking prinsesa.',
+		'maskChar Mapanganib ang lugar na yon.',
+		'maskChar Sino man ang pumunta don ay di na nakakabalik kaya wag ka na lamang tumuloy!',
+		'prince Pero kailangan ko po mailigtas ang aking prinsesa.',
+		'maskChar Sige tumuloy ka ng pareho kayong di na makabalik sa inyong mga kaharian!',
+		'prince Pasensya na po pero wala na po akong pakealam kung ano mang kapahamakan ang nakaabang sakin patungo don handa kong isugal ang buhay ko para sa aking prinsesa',
+		'maskChar Narinig ko na yan pang ilan kana sa mga matitigas ang ulo na binalaan ko pero tumuloy sila at di na muli nakabalik.',
+		'prince Ano po bang meron sa lugar na yon at madaming hindi nakakabalik?',
+		'maskChar Mahiwaga at mapanlinlang ang kuweba na yon marami kang pag susubok na kahaharapin bago mo marating ang dulo non at kung di ka palarin na malagpasan ang mga pagsubok.. habang buhay ka ng makukulong sa kuweba na iyon.',
+		'maskChar Ang tanong handa ka bang ibuwis ang buhay mo mailigtas lang ang prinsesa mo?',
+		'prince ... Opo! Ako ang dahilan kung bakit nakuha sya ng mga itim na bandido kaya ako din ang gagawa ng paraan upang maibalik sya sa aming kaharian.',
+		'maskChar Hanga ako sa iyong katapangan bata kaya sige ituturo ko sa iyo ang daan',
+		'prince Talaga po? Maraming maraming salamat!',
+		'show character prince happy',
+		'prince Halika\'t sundan mo ko.',	
+		
+		
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	],
