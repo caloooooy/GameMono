@@ -346,6 +346,8 @@ monogatari.script ({
 	
 ],
 
+
+
 	'Scene2': [
 		'play music musiccastle with volume 40 loop',
 		'show character k happy at center',
@@ -375,7 +377,30 @@ monogatari.script ({
 				},
 			}
 		},
-		'k:happy Yes! She\'s in her room..',
+		'k:happy nice! Now could you could you please type in how to code the h1 element?',
+		'k:happy you can type in a blank element.',
+
+		{'Input': {
+			'Text': 'Write H1 element in HTML Form',
+			'Validation': (input) => {
+				// Check what the player entered against our code
+				return input.trim () === '<h1></h1>';
+				
+			},
+			'Save': (input) => {
+				'next'
+				// Do something here, might not be necessary to
+				// save anything for password inputs.
+			},
+			
+			'Revert': () => {
+				// Revert what we did in the save function
+			},
+			'Warning': 'That\'s not the right code.'
+		}},
+
+		'k:happy We\'ll done!',
+		'k:happy She\'s in her room..',
 		'show character k normal at center',
 		'k Guard! Kindly go to our princess\'s room and tell her Prince {{player.name}} is here.',
 		'show character g angry at right with fadeInRightBig',
@@ -417,6 +442,28 @@ monogatari.script ({
 ],
 	'Scene4': [
 		'show character g surprised at left',
+		'g:normal before seeing the princess you must pass this test else you wont be talking with the princess.',
+		
+		{'Input': {
+			'Text': 'Code element paragraph in HTML Form',
+			'Validation': (input) => {
+				// Check what the player entered against our code
+				return input.trim () === '<p></p>';
+				
+			},
+			'Save': (input) => {
+				'next'
+				// Do something here, might not be necessary to
+				// save anything for password inputs.
+			},
+			
+			'Revert': () => {
+				// Revert what we did in the save function
+			},
+			'Warning': 'That\'s not the right code.'
+		}},
+
+		'g:happy Great! Come and we\'ll see the princess in a bit',
 		'g:surprised I\'m happy to meet you your Majesty',
 		'show character g normal at left',
 		'g:normal  My princess.. The prince wishes to see you.',
@@ -459,6 +506,28 @@ monogatari.script ({
 
 	'Scene5': [
 		'show character k happy at center',
+		
+
+		{'Input': {
+			'Text': 'Code href attribute in HTML Form',
+			'Validation': (input) => {
+				// Check what the player entered against our code
+				return input.trim () === '<a href=""></a>';
+				
+			},
+			'Save': (input) => {
+				'next'
+				// Do something here, might not be necessary to
+				// save anything for password inputs.
+			},
+			
+			'Revert': () => {
+				// Revert what we did in the save function
+			},
+			'Warning': 'That\'s not the right code.'
+		}},
+
+		'k:happy That\'s right!',
 		'k:happy Thank you very much',
 		'k:happy Take care!',
 		'stop music musiccastle',
