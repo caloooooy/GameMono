@@ -79,7 +79,16 @@ monogatari.assets ('videos', {
 monogatari.assets ('images', {
 	'flower': 'flower.jpg',
 	'letter': 'tobecontinued.jpg',
-	'html': 'whatishtml.png'
+	'html': 'whatishtml.png',
+	'sample': 'samplehtml.png',
+	'sampleoutput': 'output.png',
+	'tagname': 'tagname.png',
+	'startend': 'startend.png',
+	'paragraph': 'paragraph.png',
+	'examplep': 'examplep.png'
+
+
+
 });
 
 // Define the backgrounds for each scene.
@@ -144,7 +153,7 @@ monogatari.characters ({
 		directory: "princess",
 		sprites: {
             angry: 'princessangry.png',
-            happy: 'princesshappy.png',
+            happy: 'princesssmile.png',
             normal: 'princessnormal.png',
             sad: 'princesssad.png',
 			surprised: 'princesssurprised.png',
@@ -183,7 +192,15 @@ monogatari.characters ({
 		default_expression: 'normal',
 	},
 	'kn': {
-		name: 'Swane'
+		name: 'Swane',
+		color: '#decaff',
+		directory: 'kidnapper',
+		sprites: {
+			normal: 'kidnapper2.png'
+		},
+		expressions:{
+			normal:  'expression/knexpression2.png.'
+		}
 	},
 	'player': {
 		name: '{{player.name}}',
@@ -207,6 +224,7 @@ monogatari.characters ({
 monogatari.script ({
 	// The game starts here.
 	'Start': [
+		'show scene black',
 		'show character prince normal at center with fadeIn',
 		'prince:normal Hello! I am your guide to this game and You are?',
 		{
@@ -237,7 +255,67 @@ monogatari.script ({
 		'prince:happy Hi Prince {{player.name}} Welcome to our game called HTML Kingdom.',
 		'show character prince normal at center',
 		'prince:normal This game is where you can Learn HTML with a twist of story.',
-		'hide character prince happy with fadeOut',
+		'prince:normal Let\'s Begin our lesson',
+		'prince:normal HTML stands for HyperText Markup Language it is used for creating Web Pages',
+		'prince:normal Here\'s the example of a HyperText Markup Language',
+		'show character prince normal at left',
+		'show image sample at center with fadeIn',
+		'prince:normal and the output of that code is this',
+		'show image sampleoutput at right',
+		'prince:normal Amazing right?',
+		'show character prince happy at left',
+		'prince:happy you can create a web page using HTML',
+		'hide image sample with fadeOut',
+		'hide image sampleoutput with fadeOut',
+		'show character prince normal at left',
+		'jump ChoiceIntro'
+	],
+		'ChoiceIntro':[
+			{'Choice':{
+				'Dialog':'prince:normal You get it?',
+				'haha':{
+					'Text': 'Yes',
+					'Do': 'jump Great!' 
+				},
+				'hehe': {
+					'Text': 'No',
+					'Do': 'jump Okay'
+				}
+				}
+			}
+		],
+		'Great!':[
+			'show character prince happy at center with fadeIn',
+			'prince:happy Wow! That\'s Great',
+			'jump Okay'
+		],
+		'Okay':[
+			'show character prince normal at center with fadeIn',
+			'prince:normal Okay, Let me explain it to you how it works.',
+			'show character prince normal at left',
+			'show image sample at center with fadeIn',
+			'prince:normal The !DOCTYPE html declaration defines that this document is an HTML5 document',
+			'prince:normal The html element is the root element of an HTML page',
+			'prince:normal The head element contains meta information about the HTML page',
+			'prince:normal The title element specifies a title for the HTML page (which is shown in the browser\'s title bar or in the page\'s tab)',
+			'prince:normal The body element defines the document\'s body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc.',
+			'prince:normal The h1 element defines a large heading',
+			'prince:normal The p element defines a paragraph',
+			'hide character prince',
+			'hide image sample',
+			'show character prince happy at center',
+			'prince:happy I hope you understand our lesson Prince {{player.name}}',
+			'show character prince normal at center',
+			'prince:normal If not you can visit this Website https://www.w3schools.com it has a lot of lessons',
+			'show character prince happy at center',
+			'prince:happy Alright Prince {{player.name}} let\'s test it out what you had learn',
+			'prince:happy Let\'s go to the game',
+			'jump Go'
+
+		],
+		
+		'Go':[
+		'show scene black',
 		'centered Before the wedding....',
 		'show scene castle with fadeIn',
 		'play music musiccastle with volume 40 loop',
@@ -246,6 +324,7 @@ monogatari.script ({
 		'stop music musiccastle',
 		'jump Choice1',
 	],
+	
 		
 	
 
@@ -317,19 +396,19 @@ monogatari.script ({
 
 	'Choice3':[
 		{'Choice': {
-			'Dialog': 'g What is the correct HTML linebreak?',
+			'Dialog': 'g What is element head is all about ?',
 			'guardWrong1': {
-				'Text': 'lb',
+				'Text': 'it defines a paragraph',
 				'Do':'jump guardWrong'
 
 			},
 			'guardRight': {
-				'Text': 'br',
+				'Text': 'it contains meta information about the HTML page',
 				'Do': 'show character g surprised at left',
 				'Do': 'jump Scene4',
 			},
 			'guardWrong2': {
-				'Text': 'break',
+				'Text': 'it defines a large heading',
 				'Do': 'jump guardWrong'
 				
 			},
@@ -415,8 +494,8 @@ monogatari.script ({
 	'Scene6': [
 		'show character p pinkhappy at center',
 		'p:pinkhappy Thank you Prince!',
-		'player I\'ts an honour Princess', 
-		'player Are you hungry?. I\'ll just grab us something to eat.',
+		'player It\'s an honour Princess', 
+		'player Are you hungry? I\'ll just grab us something to eat.',
 		'show character p pinknormal at center',
 		'p:pinknormal Sure!',
 		'stop music musicgarden',
@@ -468,7 +547,40 @@ monogatari.script ({
 		'stop music musiccastle',
 		'show scene castle',
 		'show image letter center with fadeIn',
-		'jump Chapter2'
+		'jump Chapter2Intro'
+	],
+	'Chapter2Intro':[
+		'show scene black',
+		'show character prince sad at center with fadeIn',
+		'prince:sad Oh! No! Prince {{player.name}}',
+		'prince:sad What will you do?',
+		'show character prince normal at center',
+		'jump ChoiceChapter2'
+	],
+	'ChoiceChapter2':[
+		{'Choice':{
+			'Dialog': 'prince Do you want to continue?',
+			'Yes':{
+				'Text': 'Yes I want to save the Princess',
+				'Do': 'jump Chapter2' 
+			},
+			'No':{
+				'Text': 'No I want to go back',
+				'Do': 'jump Ending'
+			}	
+		}
+		}
+	],
+	'Ending':[
+		'show scene castle with fadeIn',
+		'show character p happy at left',
+		'show character k happy at center',
+		'show character prince happy at right',
+		'p:happy Thank you for playing',
+		'k:happy Thank you for playing',
+		'prince:happy Thank you for playing',
+		'end'
+
 	],
 	'Chapter2':[
 		'show scene chapter2 with fadeIn',
@@ -478,29 +590,75 @@ monogatari.script ({
 	
 	// Sir Ryan Section
 		'Scene8':[ 
-			'play music scene8 with volume 40 loop',
 			'show scene black',
 			'centered inside the letter',
-			'Kailangan mong pumunta sa CSS cave para maaligtas ang prinsesa',
-			'show scene castle',
-			'show character prince angry at left with fadeIn',
-			'show character k angry at center with fadeIn ',
-			'show character g angry at right with fadeIn',
-			'prince:angry agad na umalis ang prinsipe para hanapin at iligtas ang prinsesa',
-			'hide character prince with fadeOut',
+			'You need to go in HTML cave to save the princess',
+			'show scene black',
+			'show character prince normal at center with fadeIn',
+			'prince:normal Prince {{player.name}} left to the castle to search and save Princess Jasmine',
+			'show scene castle with fadeIn',
+			'show character k angry at center',
 			'k:angry Guard imbistigahan ang pagkawala ng princesa',
-			'hide character k angry at center with fadeOut ',
+			'show character g angry at right',
 			'g:angry masusunod po mahal na hari',
-			'hide character g angry at right with fadeOut',
+			'jump Scene8Act1'
+		],
+		'Scene8Act1':[
 			'show scene black',
 			'centered *Sa kalagitnaan ng kanyang pag lalakbay may makakasalubong syang nakaputing maskara*',
+			'play music scene8 with volume 40 loop',
 			'show scene scene8 with fadeIn',
 			'show character maskChar normal at right with fadeIn',
-			'player Hello? Sir? Maari po ba akong mag tanong kung saan matatagpuan ang CSS Cave?',
-			'maskChar Sino ka? Anong kailangan mo?! Bakit gusto mo pumunta sa CSS Cave?!!',
+			'jump maskQuestion'
+		],
+		'maskQuestion':[
+			{
+				'Choice':{
+					'Dialog': 'prince What will you do?',
+					'Run':{
+						'Text': 'Run',
+						'Do': 'jump MaskEnding'
+					},
+					'Ask':{
+						'Text': 'Ask',
+						'Do': 'jump Ask'
+					}
+				}
+			}
+		],
+		'MaskEnding':[
+			'maskChar I know what you\'re looking for, but you failed me!',
+			'hide character maskChar fadeOut',
+			'show character kn normal at center with fadeIn',
+			'kn You are alone now!',
+			'kn I will kill you',
+			'You died',
+			'show scene black',
+			'show character prince sad at center with fadeIn',
+			'prince:sad Oh prince',
+			'jump Continue'
+		],
+		'Continue':[
+			{'Choice':{
+				'Dialog': 'prince Do you want to Continue?',
+				'Yes':{
+					'Text': 'Yes',
+					'Do': 'jump Scene8Act1'
+				},
+				'No':{
+					'Text': 'No',
+					'Do': 'jump Ending'
+				}
+			}
+		}
+		],
+
+		'Ask':[
+			'player Hello? Sir? Maari po ba akong mag tanong kung saan matatagpuan ang HTML Cave?',
+			'maskChar Sino ka? Anong kailangan mo?! Bakit gusto mo pumunta sa HTML Cave?!!',
 			'player Ako po si Prince {{player.name}}. Nang galing po ako sa kahariang JavaScript. Naparito po ako upang iligtas ang aking prinsesa ayon sa sulat na pinadala nila sa CSS Cave ko lamang matatagpuan ang aking prinsesa.',
 			'maskChar Pasensya kana ngunit hindi kita matutulungan. Bumalik kana lamang sa inyong kaharian.',
-			'show character prince angry Ngunit bakit?!! Hindi po ako babalik ng aming kaharian hangga\'t di ko kasama ang aking prinsesa.',
+			'player Ngunit bakit?!! Hindi po ako babalik ng aming kaharian hangga\'t di ko kasama ang aking prinsesa.',
 			'maskChar Mapanganib ang lugar na yon.',
 			'maskChar Sino man ang pumunta don ay di na nakakabalik kaya wag ka na lamang tumuloy!',
 			'player Pero kailangan ko po mailigtas ang aking prinsesa.',
@@ -514,14 +672,84 @@ monogatari.script ({
 			'maskChar Hanga ako sa iyong katapangan bata kaya sige ituturo ko sa iyo ang daan',
 			'player Talaga po? Maraming maraming salamat!',
 			'maskChar Halika\'t sundan mo ko.',	
+			'jump Scene9Act1'
+		],
+		'Scene9Act1':[
+			'show scene scene8',
+			'show character maskChar normal at center',
+			'maskChar Before we go I need to teach you something about HTML cave',
+			'jump Scene9Act2'
+		],
+		'Scene9Act2':[
+			{
+				'Choice':{
+					'Yes':{
+						'Text': 'What is it?',
+						'Do': 'jump Scene9Lesson'
+					},
+					'No':{
+						'Text': 'I\'m not interested',
+						'Do': 'jump NotInterested'
+					}
+				},
+			}
+
+		],
+		'Scene9Lesson':[
+			'show scene scene8 with fadeIn',
+			'show character maskChar normal at left',
+			'maskChar The HTML contains Element like this Image',
+			'show image tagname at center',
+			'maskChar The HTML element is everything from Start tag to the end tag',
+			'hide image tagname with fadeOut',
+			'show image startend at right with fadeIn',
+			'maskChar Here is the Example',
+			'hide image startend',
+			'jump Understand?'
+		],
+		'Understand?':[
+			{
+				'Choice':{
+					'Dialog': 'maskChar You understand Prince {{player.name}}',
+					'Yes':{
+						'Text': 'Yes',
+						'Do': 'jump Scene9paragraph'
+					},
+					'No':{
+						'Text': 'No',
+						'Do': 'jump GoTo'
+					}
+				}
+			}
+		],
+		'GoTo':[
+			'show scene scene8',
+			'show character maskChar normal at center',
+			'maskChar You can go to https://www.w3schools.com for more intruction.',
+			'jump Scene9paragraph'
+		],
+		'Scene9paragraph':[
+			'show scene scene8',
+			'show character maskChar normal at center',
+			'maskChar Let\'s go to paragraph.',
+			'hide character maskChar',
+			'show character maskChar normal at left',
+			'show image paragraph at center with fadeIn',
+			'maskChar A paragraph always starts on a new line.',
+			'show image examplep at right with backInUp',
+			'maskChar The output is here',
 			'jump Scene9'
-	],
+		],
+
+		'NotInterested':[
+
+		],
 
 	//carlo Section
 	'Scene9':[
 		'show scene scene9 with fadeIn',
 		'player Matagal na po ba kayong nakatira dito sa kagubatan?',
-		'show character maskChar at center',
+		'show character maskChar normal at left with fadeIn',
 		'maskChar Matagal-tagal na din.',
 		'player Bakit? Wala ka po bang asawa o anak?',
 		'maskChar WALA',
@@ -533,15 +761,16 @@ monogatari.script ({
 		'player Kailangan ako ng kaharian namin at nangako ako sa hari na ibabalik at ililigtas ko ang prinsesa.',
 		'maskChar Goodluck!',
 		'player May alam po ba kayo tungkol sa mga pagsubok ng CSS Cave?',
-		'hide scene scene9',
 		'maskChar',
 		'show scene scene10 with fadeIn',
+		'show character maskChar normal at center',
 		'maskChar Hanggang dito nalang kita maihahatid Prince {{player.name}} diretsuhin mo lang ung daan na \'to',
 		'player Bakit po?',
 		'maskChar Dito na ang sagradong lugar ng kuweba di na ako maaring sumama.',
 		'player Ah ganon po ba? Sige po. Maraming salamat po.',
 		'maskChar Walang anuman! Mag-iingat ka sana maligtas mo ang iyong prinsesa. Hihintayin ko ang pag babalik mo sa lagusan.',
-		'player Opo maraming maraming salamat po sa tulong nyo sir.'
+		'player Opo maraming maraming salamat po sa tulong nyo Estranghero.',
+		'hide character maskChar with fadeOut'
 
 	],
 	
