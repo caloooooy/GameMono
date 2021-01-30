@@ -100,7 +100,8 @@ monogatari.assets ('scenes', {
 	'scene9': 'scene9bg.jpg',
 	'scene10': 'scene10bg.jpg',
 	'chapter2': 'chapter2.jpg',
-	'black': 'blackscene.jpg'
+	'black': 'blackscene.jpg',
+	'classroom': 'classroom.png'
 });
 
 
@@ -251,6 +252,7 @@ monogatari.script ({
 				'Warning': 'You must enter a name prince!'
 			}
 		},
+		'show scene classroom with fadeIn',
 		'show character prince happy at center',
 		'prince:happy Hi Prince {{player.name}} Welcome to our game called HTML Kingdom.',
 		'show character prince normal at center',
@@ -387,15 +389,15 @@ monogatari.script ({
 				return input.trim () === '<h1></h1>';
 				
 			},
-			'Save': (input) => {
-				'next'
-				// Do something here, might not be necessary to
-				// save anything for password inputs.
-			},
+			// 'Save': (input) => {
+			// 	'next'
+			// 	// Do something here, might not be necessary to
+			// 	// save anything for password inputs.
+			// },
 			
-			'Revert': () => {
-				// Revert what we did in the save function
-			},
+			// 'Revert': () => {
+			// 	// Revert what we did in the save function
+			// },
 			'Warning': 'That\'s not the right code.'
 		}},
 
@@ -666,6 +668,7 @@ monogatari.script ({
 			'show character prince normal at center with fadeIn',
 			'prince:normal Prince {{player.name}} left to the castle to search and save Princess Jasmine',
 			'show scene castle with fadeIn',
+			'play music musiccastle',
 			'show character k angry at center',
 			'k:angry Guard imbistigahan ang pagkawala ng princesa',
 			'show character g angry at right',
@@ -807,6 +810,7 @@ monogatari.script ({
 			'maskChar A paragraph always starts on a new line.',
 			'show image examplep at right with backInUp',
 			'maskChar The output is here',
+			'stop music scene8',
 			'jump Scene9'
 		],
 
